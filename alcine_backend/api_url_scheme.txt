@@ -1,0 +1,14 @@
+REST API - URL SQUEME
+=====================
+
+
+/theatres?location=Madrid				--> Devuelve la lista de cines dada una localización
+/theatres/{tid}							--> Devuelve los datos de un cine
+/theatres/{tid}/films					--> Devuelve la lista de películas para un cine
+/theatres/{tid}/films/{fid}				--> Devuelve las sesiones de una película para un cine determinado
+
+
+/films?location=Madrid					--> Devuelve la lista de películas dada una localización
+/films/{fid}							--> Devuelve los datos de una película
+/films/{fid}/theatres					--> Devuelve la lista de cines para una película
+/films/{fid}/theatres/{tid}				--> Devuelve las sesiones de un cine para una película determinada
