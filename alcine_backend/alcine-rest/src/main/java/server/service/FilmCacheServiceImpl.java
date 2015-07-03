@@ -15,7 +15,7 @@ public class FilmCacheServiceImpl implements FilmCacheService {
 		FilmCache film = DBMapper.getFilm(fid, lang);
 		
 		if (film == null)
-			film = DBMapper.insertFilm(fid, lang, new Date(), JSONBuilder.getFilmCacheJSONResponse());
+			film = DBMapper.insertFilm(fid, lang, new Date(), JSONBuilder.getFilmCacheJSONResponse(fid, lang));
 //		else if (film.getCache_date() < new Date())
 		
 		return film;
