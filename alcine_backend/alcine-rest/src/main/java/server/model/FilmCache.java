@@ -9,6 +9,15 @@ public class FilmCache {
 	private String r_lang;
 	private Date cache_date;
 	private JSONObject response;
+	
+	public FilmCache() {}
+	
+	public FilmCache(String fid, String r_lang, Date cache_date, JSONObject response) {
+		this.fid = fid;
+		this.r_lang = r_lang;
+		this.cache_date = cache_date;
+		this.response = response;
+	}
 
 	public String getFid() {
 		return fid;
