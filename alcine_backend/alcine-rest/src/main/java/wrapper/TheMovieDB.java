@@ -1,11 +1,14 @@
 package wrapper;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.URL;
+import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 import org.json.JSONObject;
+
+import com.mashape.unirest.http.HttpResponse;
+import com.mashape.unirest.http.JsonNode;
+import com.mashape.unirest.http.Unirest;
+import com.mashape.unirest.http.exceptions.UnirestException;
 
 public class TheMovieDB {
 	
@@ -17,12 +20,11 @@ public class TheMovieDB {
 		
 		try {
 			
-			URL url = new URL("http://api.themoviedb.org/3/search/movie?api_key=" + TMDB_API_KEY + "&query=" + URLEncoder.encode(name, "UTF-8") + "&language=" + lang);
-			BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
-			result = new JSONObject(br.readLine());
-		
-		} catch (Exception ex) {
-			ex.printStackTrace();
+			HttpResponse<JsonNode> request = Unirest.get("http://api.themoviedb.org/3/search/movie?api_key=" + TMDB_API_KEY + "&query=" + URLEncoder.encode(name, "UTF-8") + "&language=" + lang).asJson();
+			result = request.getBody().getObject();
+			
+		} catch (UnirestException | UnsupportedEncodingException e) {
+			e.printStackTrace();
 		}
 		
 		return result;
