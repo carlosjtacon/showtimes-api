@@ -1,15 +1,15 @@
 package server.utils;
 
-import org.json.JSONObject;
-
 import wrapper.KimonoGM;
 import wrapper.TheMovieDB;
 
+import com.google.gson.JsonObject;
+
 public class JSONBuilder {
-	public static JSONObject getFilmCacheJSONResponse(String fid,  String lang) {
-		JSONObject kimono_info = KimonoGM.getTheatresByMovie(fid, lang, 0);
-		String fname = kimono_info.getJSONObject("results").getJSONArray("film").getJSONObject(0).get("film_name").toString();
-		JSONObject tmdb_info = TheMovieDB.getFilmData(StringUtils.cleanFilmName(fname), lang);
+	public static JsonObject getFilmCacheJSONResponse(String fid,  String lang) {
+		JsonObject kimono_info = KimonoGM.getTheatresByMovie(fid, lang, 0);
+		String fname = kimono_info.getAsJsonObject("results").getAsJsonArray("film").get(0).getAsJsonObject().get("film_name").toString();
+		JsonObject tmdb_info = TheMovieDB.getFilmData(StringUtils.cleanFilmName(fname), lang);
 		return tmdb_info;
 	}
 }

@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 import server.model.FilmCache;
 import server.service.FilmCacheService;
 
+import com.google.gson.Gson;
+
 @RestController
 public class FilmCacheController {
 	
@@ -18,7 +20,9 @@ public class FilmCacheController {
 	private FilmCacheService filmCacheService;
 
 	@RequestMapping(value="/films/{fid}", method=RequestMethod.GET)
-	public @ResponseBody FilmCache getFilm(@PathVariable(value="fid") String fid, @RequestParam(value="lang", defaultValue="es") String lang) {
-		return filmCacheService.getFilmByFid(fid, lang);
+	public @ResponseBody String getFilm(@PathVariable(value="fid") String fid, @RequestParam(value="lang", defaultValue="es") String lang) {
+		Gson gson = new Gson();
+		FilmCache film = filmCacheService.getFilmByFid(fid, lang);
+		return gson.toJson(film);
 	}
 }

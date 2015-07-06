@@ -2,7 +2,7 @@ package server.model;
 
 import java.util.Date;
 
-import org.json.JSONObject;
+import com.google.gson.JsonObject;
 
 public class Cache {
 	private String url;
@@ -12,7 +12,7 @@ public class Cache {
 	private String tid;
 	private String fid;
 	private Date cache_date;
-	private JSONObject response;
+	private JsonObject response;
 
 	public String getUrl() {
 		return url;
@@ -67,11 +67,11 @@ public class Cache {
 		this.cache_date = cache_date;
 	}
 
-	public JSONObject getResponse() {
+	public JsonObject getResponse() {
 		return response;
 	}
 	
-	public void setResponse(JSONObject response) {
+	public void setResponse(JsonObject response) {
 		this.response = response;
 	}
 

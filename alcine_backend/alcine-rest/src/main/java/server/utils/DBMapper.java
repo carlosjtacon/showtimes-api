@@ -5,9 +5,11 @@ import java.sql.SQLException;
 import java.util.Date;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import server.model.FilmCache;
+
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 public class DBMapper {
 	
@@ -21,7 +23,8 @@ public class DBMapper {
 			DataBaseConect.conectarAlServidor("postgres", "postgres", "localhost", "alcine-dev");
 			ResultSet rs = DataBaseConect.exeQuery("SELECT * FROM \"FILM_CACHE\" where fid = '"+ fid +"' and r_lang = '"+ lang +"'");	
 			while (rs.next()) {
-				fc = new FilmCache(rs.getString("fid"), rs.getString("r_lang"), rs.getDate("cache_date"), new JSONObject(rs.getString("response")));
+				JsonObject jo = new JsonParser().parse(rs.getString("response")).getAsJsonObject();
+				fc = new FilmCache(rs.getString("fid"), rs.getString("r_lang"), rs.getDate("cache_date"), jo);
 			}
 			DataBaseConect.cerrarConexion();
 			
@@ -32,7 +35,12 @@ public class DBMapper {
 		return fc;
 	}
 	
-	public static FilmCache insertFilm(String fid, String lang, Date date, JSONObject response) {
+	public static FilmCache insertFilm(String fid, String lang, Date date, JsonObject response) {
+		
+		return null;
+	}
+	
+public static FilmCache updateFilm(String fid, String lang, Date date, JsonObject response) {
 		
 		return null;
 	}

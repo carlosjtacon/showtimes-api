@@ -2,13 +2,13 @@ package server.model;
 
 import java.util.Date;
 
-import org.json.JSONObject;
+import com.google.gson.JsonObject;
 
 public class TheatreCache {
 	private String tid;
 	private String r_lang;
 	private Date cache_date;
-	private JSONObject response;
+	private JsonObject response;
 
 	public String getTid() {
 		return tid;
@@ -34,11 +34,11 @@ public class TheatreCache {
 		this.cache_date = cache_date;
 	}
 
-	public JSONObject getResponse() {
+	public JsonObject getResponse() {
 		return response;
 	}
 	
-	public void setResponse(JSONObject response) {
+	public void setResponse(JsonObject response) {
 		this.response = response;
 	}
 }

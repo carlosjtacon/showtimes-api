@@ -2,17 +2,17 @@ package server.model;
 
 import java.util.Date;
 
-import org.json.JSONObject;
+import com.google.gson.JsonObject;
 
 public class FilmCache {
 	private String fid;
 	private String r_lang;
 	private Date cache_date;
-	private JSONObject response;
+	private JsonObject response;
 	
 	public FilmCache() {}
 	
-	public FilmCache(String fid, String r_lang, Date cache_date, JSONObject response) {
+	public FilmCache(String fid, String r_lang, Date cache_date, JsonObject response) {
 		this.fid = fid;
 		this.r_lang = r_lang;
 		this.cache_date = cache_date;
@@ -43,11 +43,11 @@ public class FilmCache {
 		this.cache_date = cache_date;
 	}
 
-	public JSONObject getResponse() {
+	public JsonObject getResponse() {
 		return response;
 	}
 	
-	public void setResponse(JSONObject response) {
+	public void setResponse(JsonObject response) {
 		this.response = response;
 	}
 }
