@@ -1,4 +1,4 @@
-package server.utils;
+package server.mappers;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -7,11 +7,12 @@ import java.util.Date;
 import org.json.JSONException;
 
 import server.model.FilmCache;
+import server.utils.DataBaseConect;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-public class DBMapper {
+public class FilmCacheMapper {
 	
 	public static FilmCache getFilm(String fid, String lang) {
 		
@@ -40,7 +41,7 @@ public class DBMapper {
 		return null;
 	}
 	
-public static FilmCache updateFilm(String fid, String lang, Date date, JsonObject response) {
+	public static FilmCache updateFilm(String fid, String lang, Date date, JsonObject response) {
 		
 		return null;
 	}
