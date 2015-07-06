@@ -21,7 +21,8 @@ public class TheMovieDB {
 		try {
 			
 			HttpResponse<JsonNode> request = Unirest.get("http://api.themoviedb.org/3/search/movie?api_key=" + TMDB_API_KEY + "&query=" + URLEncoder.encode(name, "UTF-8") + "&language=" + lang).asJson();
-			result = new JsonParser().parse(request.getBody().getObject().toString()).getAsJsonObject();
+			JsonObject fullJson = new JsonParser().parse(request.getBody().getObject().toString()).getAsJsonObject();
+			result = fullJson.getAsJsonArray("results").get(0).getAsJsonObject();
 			
 		} catch (UnirestException | UnsupportedEncodingException e) {
 			e.printStackTrace();
