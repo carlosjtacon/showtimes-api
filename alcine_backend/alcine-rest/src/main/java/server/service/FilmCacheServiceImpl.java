@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import server.mappers.FilmCacheMapper;
 import server.model.FilmCache;
-import server.utils.JSONBuilder;
+import server.utils.JsonBuilder;
 
 import com.google.gson.JsonObject;
 
@@ -18,13 +18,13 @@ public class FilmCacheServiceImpl implements FilmCacheService {
 		
 		if (film == null) {
 			
-			JsonObject response = JSONBuilder.getFilmCacheJSONResponse(fid, lang);
+			JsonObject response = JsonBuilder.getFilmCacheJSONResponse(fid, lang);
 			film = FilmCacheMapper.insertFilm(fid, lang, new Date(), response);
 			/* DEBUG */film = new FilmCache(fid, lang, new Date(), response);
 			
 		} else if (film.getCache_date().compareTo(new Date()) > 0) {
 			
-			JsonObject response = JSONBuilder.getFilmCacheJSONResponse(fid, lang);
+			JsonObject response = JsonBuilder.getFilmCacheJSONResponse(fid, lang);
 			film = FilmCacheMapper.updateFilm(fid, lang, new Date(), response);
 			/* DEBUG */film = new FilmCache(fid, lang, new Date(), response);
 			
