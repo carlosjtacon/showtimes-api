@@ -1,8 +1,9 @@
-package server.service;
+package server.service.impl;
 
 import org.springframework.stereotype.Service;
 
 import server.model.Cache;
+import server.service.CacheService;
 
 @Service
 public class CacheServiceImpl implements CacheService {

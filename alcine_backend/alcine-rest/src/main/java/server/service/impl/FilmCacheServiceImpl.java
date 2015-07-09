@@ -1,4 +1,4 @@
-package server.service;
+package server.service.impl;
 
 import java.util.Date;
 
@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import server.mappers.FilmCacheMapper;
 import server.model.FilmCache;
+import server.service.FilmCacheService;
 import server.utils.DateUtils;
 import server.utils.JsonBuilder;
 
