@@ -8,7 +8,9 @@ import server.mappers.FilmCacheMapper;
 import server.model.FilmCache;
 import server.service.FilmCacheService;
 import server.utils.DateUtils;
-import server.utils.JsonBuilder;
+import server.utils.StringUtils;
+import wrapper.KimonoGM;
+import wrapper.TheMovieDB;
 
 import com.google.gson.JsonObject;
 
@@ -21,16 +23,23 @@ public class FilmCacheServiceImpl implements FilmCacheService {
 		
 		if (film == null) {
 			
-			JsonObject response = JsonBuilder.getFilmCacheJSONResponse(fid, lang);
+			JsonObject response = getFilmCacheJSONResponse(fid, lang);
 			film = FilmCacheMapper.insertFilm(fid, lang, new Date(), response);
 			
 		} else if (DateUtils.isFilmCacheValid(film.getCache_date())) {
 			
-			JsonObject response = JsonBuilder.getFilmCacheJSONResponse(fid, lang);
+			JsonObject response = getFilmCacheJSONResponse(fid, lang);
 			film = FilmCacheMapper.updateFilm(fid, lang, new Date(), response);
 			
 		}
 		
 		return film;
+	}
+	
+	private JsonObject getFilmCacheJSONResponse(String fid,  String lang) {
+		JsonObject kimono_info = KimonoGM.getTheatresByMovie(fid, lang, 0);
+		String fname = kimono_info.getAsJsonObject("results").getAsJsonArray("film").get(0).getAsJsonObject().get("film_name").toString();
+		JsonObject tmdb_info = TheMovieDB.getFilmData(StringUtils.cleanFilmName(fname), lang);
+		return tmdb_info;
 	}
 }
