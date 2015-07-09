@@ -20,7 +20,7 @@ public class CacheServiceImpl implements CacheService {
 		return new Cache();
 	}
 
-	public Cache getTheatresByFid(String fid, String lang, int date) {
+	public Cache getTheatresByFid(String fid, String location, String lang, int date) {
 		return new Cache();
 	}
 

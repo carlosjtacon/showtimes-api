@@ -8,11 +8,24 @@ public class Cache {
 	private String url;
 	private String r_location;
 	private String r_lang;
-	private String r_date;
+	private int r_date;
 	private String tid;
 	private String fid;
 	private Date cache_date;
 	private JsonObject response;
+	
+	public Cache() {}
+	
+	public Cache(String url, String r_location, String r_lang, int r_date, String tid, String fid, Date cache_date, JsonObject response) {
+		this.url = url;
+		this.r_location = r_location;
+		this.r_lang = r_lang;
+		this.r_date = r_date;
+		this.tid = tid;
+		this.fid = fid;
+		this.cache_date = cache_date;
+		this.response = response;
+	}
 
 	public String getUrl() {
 		return url;
@@ -35,11 +48,11 @@ public class Cache {
 	public void setR_lang(String r_lang) {
 		this.r_lang = r_lang;
 	}
-	public String getR_date() {
+	public int getR_date() {
 		return r_date;
 	}
 
-	public void setR_date(String r_date) {
+	public void setR_date(int r_date) {
 		this.r_date = r_date;
 	}
 

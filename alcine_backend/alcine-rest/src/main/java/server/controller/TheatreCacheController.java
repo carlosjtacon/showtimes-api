@@ -15,12 +15,15 @@ import com.google.gson.Gson;
 
 @RestController
 public class TheatreCacheController {
-	
+
 	@Autowired
 	private TheatreCacheService theatreCacheService;
-	
-	@RequestMapping(value="/theatres/{tid}", method=RequestMethod.GET)
-	public @ResponseBody String getTheatre(@PathVariable(value="tid") String tid, @RequestParam(value="lang", defaultValue="es") String lang) {
+
+	@RequestMapping(value = "/theatres/{tid}", method = RequestMethod.GET)
+	public @ResponseBody String getTheatre(
+			@PathVariable(value = "tid") String tid,
+			@RequestParam(value = "lang", defaultValue = "es") String lang) {
+		
 		Gson gson = new Gson();
 		TheatreCache theatre = theatreCacheService.getTheatreByTid(tid, lang);
 		return gson.toJson(theatre);
