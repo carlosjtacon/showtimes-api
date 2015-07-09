@@ -10,6 +10,15 @@ public class TheatreCache {
 	private Date cache_date;
 	private JsonObject response;
 
+	public TheatreCache() {}
+	
+	public TheatreCache(String tid, String r_lang, Date cache_date, JsonObject response) {
+		this.tid = tid;
+		this.r_lang = r_lang;
+		this.cache_date = cache_date;
+		this.response = response;
+	}
+
 	public String getTid() {
 		return tid;
 	}
