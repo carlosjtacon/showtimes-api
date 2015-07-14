@@ -22,3 +22,9 @@ Welcome to AlCine REST API!
 /films/{fid}/theatres?location=Madrid&lang=es&date=0		- Returns the theatres list of one fid = film_id.
 /films/{fid}/theatres/{tid}?lang=es&date=0			        - Returns the showtimes of one tid = theatre_id and one fid = film_id.
 ```
+
+Maven Usage:
+- Install & Clean: mvn clean install.
+- Generate Eclipse Struct & Dependencies: mvn eclipse:eclipse.
+- Run: mvn spring-boot:run.
+- Access: localhost:8080
