@@ -26,7 +26,7 @@ public class FilmCacheServiceImpl implements FilmCacheService {
 			JsonObject response = getFilmCacheJSONResponse(fid, lang);
 			film = FilmCacheMapper.insertFilm(fid, lang, new Date(), response);
 			
-		} else if (DateUtils.isFilmCacheValid(film.getCache_date())) {
+		} else if (!DateUtils.isFilmCacheValid(film.getCache_date())) {
 			
 			JsonObject response = getFilmCacheJSONResponse(fid, lang);
 			film = FilmCacheMapper.updateFilm(fid, lang, new Date(), response);

@@ -2,7 +2,7 @@ CREATE TABLE "CACHE"(
 	"url" Varchar NOT NULL,
 	"r_location" Varchar NOT NULL,
 	"r_lang" Varchar NOT NULL,
-	"r_date" Timestamp with time zone NOT NULL,
+	"r_date" Numeric NOT NULL,
 	"tid" Varchar,
 	"fid" Varchar,
 	"cache_date" Timestamp with time zone NOT NULL,

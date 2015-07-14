@@ -26,7 +26,7 @@ public class TheatreCacheServiceImpl implements TheatreCacheService {
 			JsonObject response = getTheatreCacheJSONResponse(tid, lang);
 			theatre = TheatreCacheMapper.insertTheatre(tid, lang, new Date(), response);
 			
-		} else if (DateUtils.isTheatreCacheValid(theatre.getCache_date())) {
+		} else if (!DateUtils.isTheatreCacheValid(theatre.getCache_date())) {
 			
 			JsonObject response = getTheatreCacheJSONResponse(tid, lang);
 			theatre = TheatreCacheMapper.updateTheatre(tid, lang, new Date(), response);

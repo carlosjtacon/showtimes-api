@@ -74,4 +74,20 @@ public class KimonoGM {
 		
 		return result;
 	}
+	
+public static JsonObject getShowtimesByFidTid(String fid, String tid, String lang, int date) {
+		
+		JsonObject result = null;
+		
+		try {
+			
+			HttpResponse<JsonNode> request = Unirest.get("https://www.kimonolabs.com/api/ondemand/e0jphclm?apikey="+ KIMONO_API_KEY +"&mid="+ fid + "&tid=" + tid +"&hl="+ lang +"&date=" + date).asJson();
+			result = new JsonParser().parse(request.getBody().getObject().toString()).getAsJsonObject();
+			
+		} catch (UnirestException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 }
