@@ -99,14 +99,14 @@ public class CacheServiceImpl implements CacheService {
 		
 		if (cache == null) {
 			
-			JsonObject kimono_info = KimonoGM.getTheatresByMovie(fid, lang, date);
+			JsonObject kimono_info = KimonoGM.getTheatresByMovie(location, fid, lang, date);
 			JsonObject response = JsonBuilder.buildGetTheatresByFid(kimono_info);
 			
 			cache = CacheMapper.insertCache(URL, null, lang, date, null, fid, new Date(), response);
 			
 		} else if (!DateUtils.isCacheValid(cache.getCache_Date())) {
 			
-			JsonObject kimono_info = KimonoGM.getTheatresByMovie(fid, lang, date);
+			JsonObject kimono_info = KimonoGM.getTheatresByMovie(location, fid, lang, date);
 			JsonObject response = JsonBuilder.buildGetTheatresByFid(kimono_info);
 			
 			cache = CacheMapper.updateCache(URL, null, lang, date, null, fid, new Date(), response);

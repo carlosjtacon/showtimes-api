@@ -18,7 +18,6 @@ public class NominatimOSM {
 		
 		try {
 			
-			System.out.println("http://nominatim.openstreetmap.org/search/" + URLEncoder.encode(location, "UTF-8") +"?format=json&accept-language="+ lang);
 			HttpResponse<JsonNode> request = Unirest.get("http://nominatim.openstreetmap.org/search/" + URLEncoder.encode(location, "UTF-8") +"?format=json&accept-language="+ lang).asJson();
 			if(!request.getBody().getArray().isNull(0))
 				result = new JsonParser().parse(request.getBody().getArray().toString()).getAsJsonArray().get(0).getAsJsonObject();

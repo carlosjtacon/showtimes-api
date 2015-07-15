@@ -22,10 +22,11 @@ public class FilmCacheController {
 	@RequestMapping(value = "/films/{fid}", method = RequestMethod.GET)
 	public @ResponseBody String getFilm(
 			@PathVariable(value = "fid") String fid,
+			@RequestParam(value = "location") String location,
 			@RequestParam(value = "lang", defaultValue = "es") String lang) {
 
 		Gson gson = new Gson();
-		FilmCache film = filmCacheService.getFilmByFid(fid, lang);
+		FilmCache film = filmCacheService.getFilmByFid(location, fid, lang);
 		return gson.toJson(film);
 	}
 }

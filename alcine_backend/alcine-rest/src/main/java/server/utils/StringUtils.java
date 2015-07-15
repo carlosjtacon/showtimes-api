@@ -47,7 +47,7 @@ public class StringUtils {
 		try {
 			
 			Map<String, String> params = splitQuery(new URL(url));
-			return params.get("param");
+			return params.get(param);
 			
 		} catch (UnsupportedEncodingException | MalformedURLException e) {
 			e.printStackTrace();

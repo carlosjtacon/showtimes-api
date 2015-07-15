@@ -152,20 +152,38 @@ public class JsonBuilder {
 			String address  = StringUtils.cleanAddress(kimono_theatre.getAsJsonObject("info").get("text").getAsString());
 			theatre.addProperty("address", address);
 			
-//			JsonArray kimono_showtimes = kimono_theatre.getAsJsonArray("showtimes");
-//			JsonArray showtimes = new JsonArray();
-//			for (int j = 0; j < kimono_showtimes.size(); j++) {
-//				
-//				JsonObject showtime = new JsonObject();
-//				String time = kimono_showtimes.get(j).getAsJsonObject().get("text").getAsString();
-//				showtime.addProperty("time", time);
-//				String tickets = kimono_showtimes.get(j).getAsJsonObject().get("href").getAsString();
-//				showtime.addProperty("tickets", tickets);
-//				showtimes.add(showtime);
-//			
-//			}
-//			
-//			theatre.add("showtimes", showtimes);
+			if(kimono_theatre.get("showtimes").isJsonArray()) {
+			
+				JsonArray kimono_showtimes = kimono_theatre.getAsJsonArray("showtimes");
+				JsonArray showtimes = new JsonArray();
+				for (int j = 0; j < kimono_showtimes.size(); j++) {
+					
+					JsonObject showtime = new JsonObject();
+					String time = kimono_showtimes.get(j).getAsJsonObject().get("text").getAsString();
+					showtime.addProperty("time", time);
+					String tickets = kimono_showtimes.get(j).getAsJsonObject().get("href").getAsString();
+					showtime.addProperty("tickets", tickets);
+					showtimes.add(showtime);
+				
+				}
+				
+				theatre.add("showtimes", showtimes);
+				
+			} else if(kimono_theatre.get("showtimes").isJsonObject()) {
+				
+				JsonObject kimono_showtimes = kimono_theatre.getAsJsonObject("showtimes");
+				JsonArray showtimes = new JsonArray();
+				
+				JsonObject showtime = new JsonObject();
+				String time = kimono_showtimes.get("text").getAsString();
+				showtime.addProperty("time", time);
+				String tickets = kimono_showtimes.get("href").getAsString();
+				showtime.addProperty("tickets", tickets);
+				showtimes.add(showtime);
+				
+				theatre.add("showtimes", showtimes);
+				
+			}
 			
 			theatres.add(theatre);
 			
