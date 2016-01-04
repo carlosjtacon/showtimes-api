@@ -68,7 +68,7 @@ public class CacheServiceImpl implements CacheService {
 
 	public Cache getFilmsByTid(String tid, String lang, int date) {
 		
-		final String URL = "/theatres/{tid}/films";
+		final String URL = "/theatres/"+ tid +"/films";
 		
 		Cache cache = CacheMapper.getCache(URL, null, lang, date, tid, null);
 		
@@ -93,7 +93,7 @@ public class CacheServiceImpl implements CacheService {
 
 	public Cache getTheatresByFid(String fid, String location, String lang, int date) {
 
-		final String URL = "/films/{fid}/theatres";
+		final String URL = "/films/"+ fid +"/theatres";
 		
 		Cache cache = CacheMapper.getCache(URL, null, lang, date, null, fid);
 		
@@ -118,7 +118,7 @@ public class CacheServiceImpl implements CacheService {
 
 	public Cache getShowtimesByFidTid(String fid, String tid, String lang, int date) {
 
-		final String URL = "/theatres/{tid}/films/{fid}/showtimes";
+		final String URL = "/theatres/"+ tid +"/films/"+ fid +"/showtimes";
 		
 		Cache cache = CacheMapper.getCache(URL, null, lang, date, tid, fid);
 		

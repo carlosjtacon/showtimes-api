@@ -32,4 +32,8 @@ public class TheMovieDB {
 		
 	}
 	
+//	http://api.themoviedb.org/3/genre/movie/list?api_key=55a04c0aad5c2a1f9da894a06e683950&language=es
+//	http://api.themoviedb.org/3/movie/135397?api_key=55a04c0aad5c2a1f9da894a06e683950&language=es
+//	http://api.themoviedb.org/3/movie/135397/credits?api_key=55a04c0aad5c2a1f9da894a06e683950&language=es
+	
 }
