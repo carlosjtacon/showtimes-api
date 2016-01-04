@@ -28,3 +28,4 @@ Maven Usage:
 - Generate Eclipse Struct & Dependencies: mvn eclipse:eclipse.
 - Run: mvn spring-boot:run.
 - Access: localhost:8080
+- In order to use the 3rd party services you need to use your own API Keys.
